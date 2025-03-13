@@ -1,0 +1,55 @@
+```
+[gnathan@localhost ~]$ sudo sysdig -r trace.scap | tail -n 52
+1912 14:58:13.659044570 0 curl (6558) > write fd=1 size=8
+1913 14:58:13.659046805 0 curl (6558) < write res=8 data=</body>.
+1914 14:58:13.659047586 0 curl (6558) > write fd=1 size=8
+1915 14:58:13.659049980 0 curl (6558) < write res=8 data=</html>.
+1916 14:58:13.659106407 0 curl (6558) > rt_sigaction
+1917 14:58:13.659107529 0 curl (6558) < rt_sigaction
+1918 14:58:13.659111156 0 curl (6558) > rt_sigaction
+1919 14:58:13.659111677 0 curl (6558) < rt_sigaction
+1920 14:58:13.659134209 0 curl (6558) > rt_sigaction
+1921 14:58:13.659134890 0 curl (6558) < rt_sigaction
+1922 14:58:13.659135371 0 curl (6558) > rt_sigaction
+1923 14:58:13.659135881 0 curl (6558) < rt_sigaction
+1924 14:58:13.659136823 0 curl (6558) > rt_sigaction
+1925 14:58:13.659137224 0 curl (6558) < rt_sigaction
+1926 14:58:13.659137595 0 curl (6558) > rt_sigaction
+1927 14:58:13.659138226 0 curl (6558) < rt_sigaction
+1928 14:58:13.659143316 0 curl (6558) > rt_sigaction
+1929 14:58:13.659144037 0 curl (6558) < rt_sigaction
+1930 14:58:13.659145199 0 curl (6558) > close fd=3(<u>)
+1931 14:58:13.659161190 0 curl (6558) < close res=0
+1932 14:58:13.659161831 0 curl (6558) > close fd=4(<u>)
+1933 14:58:13.659173102 0 curl (6558) < close res=0
+1934 14:58:13.659178031 0 curl (6558) > brk addr=55764D57C000
+1935 14:58:13.659202567 0 curl (6558) < brk res=55764D57C000 vm_size=90176 vm_rss=8576 vm_swap=0
+1936 14:58:13.659203840 0 curl (6558) > rt_sigaction
+1937 14:58:13.659204461 0 curl (6558) < rt_sigaction
+1938 14:58:13.659210602 0 curl (6558) > rt_sigaction
+1939 14:58:13.659211043 0 curl (6558) < rt_sigaction
+1940 14:58:13.659211384 0 curl (6558) > rt_sigaction
+1941 14:58:13.659211775 0 curl (6558) < rt_sigaction
+1942 14:58:13.659212827 0 curl (6558) > rt_sigaction
+1943 14:58:13.659213218 0 curl (6558) < rt_sigaction
+1944 14:58:13.659216764 0 curl (6558) > rt_sigaction
+1945 14:58:13.659217165 0 curl (6558) < rt_sigaction
+1946 14:58:13.659217495 0 curl (6558) > rt_sigaction
+1947 14:58:13.659217876 0 curl (6558) < rt_sigaction
+1948 14:58:13.659240538 0 curl (6558) > close fd=5(<4t>10.0.2.15:51006->96.7.128.192:80)
+1949 14:58:13.659672601 0 curl (6558) < close res=0
+1950 14:58:13.659676076 0 curl (6558) > rt_sigaction
+1951 14:58:13.659677098 0 curl (6558) < rt_sigaction
+1952 14:58:13.659677759 0 curl (6558) > rt_sigaction
+1953 14:58:13.659678220 0 curl (6558) < rt_sigaction
+1954 14:58:13.659678580 0 curl (6558) > rt_sigaction
+1955 14:58:13.659678981 0 curl (6558) < rt_sigaction
+1956 14:58:13.659682198 0 curl (6558) > rt_sigaction
+1957 14:58:13.659682608 0 curl (6558) < rt_sigaction
+1958 14:58:13.659683400 0 curl (6558) > brk addr=55764D57A000
+1959 14:58:13.659691685 0 curl (6558) < brk res=55764D57A000 vm_size=90168 vm_rss=8576 vm_swap=0
+1960 14:58:13.659694581 0 curl (6558) > brk addr=55764D579000
+1961 14:58:13.659699430 0 curl (6558) < brk res=55764D579000 vm_size=90164 vm_rss=8576 vm_swap=0
+1962 14:58:13.661041691 0 curl (6558) > exit_group
+1963 14:58:13.661661776 0 curl (6558) > procexit status=0 ret=0 sig=0 core=0 reaper_tid=0
+```
