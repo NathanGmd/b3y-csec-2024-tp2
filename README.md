@@ -80,3 +80,5 @@ write(1, "Bonjour ceci est un fichier test"..., 33) = 33
 595 14:40:00.488971383 1 cat (6400) > write fd=1 size=33
 596 14:40:00.489176348 1 cat (6400) < write res=33 data=Bonjour ceci est un fichier test.
 ```
+
+[curl exemple.org]("https://github.com/NathanGmd/b3y-csec-2024-tp2/blob/main/sysdig%20curl%20example.org")
