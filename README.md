@@ -62,3 +62,21 @@ write(1, "Bonjour ceci est un fichier test"..., 33) = 33
 ```
 
 ## 2. Sysdig
+
+```
+[gnathan@localhost ~]$ sudo sysdig -r trace.scap | grep "write"
+814 14:36:41.502273502 0 ls (6382) > write fd=1 size=73
+815 14:36:41.502479930 0 ls (6382) < write res=73 data=readme  readme.txt  .[0m.[01;31msysdig-0.39.0-x86_64.rpm.[0m  trace.scap.
+```
+
+```
+[gnathan@localhost ~]$ sudo sysdig -r trace.scap | grep "openat" | grep "readme"
+585 14:40:00.488856928 1 cat (6400) > openat dirfd=-100(AT_FDCWD) name=readme(readme) flags=1(O_RDONLY) mode=0
+586 14:40:00.488861105 1 cat (6400) < openat fd=3(<f>readme) dirfd=-100(AT_FDCWD) name=readme(readme) flags=1(O_RDONLY) mode=0 dev=FD00 ino=25638241
+```
+
+```
+[gnathan@localhost ~]$ sudo sysdig -r trace.scap | grep "write"
+595 14:40:00.488971383 1 cat (6400) > write fd=1 size=33
+596 14:40:00.489176348 1 cat (6400) < write res=33 data=Bonjour ceci est un fichier test.
+```
