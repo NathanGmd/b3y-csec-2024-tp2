@@ -86,30 +86,41 @@ write(1, "Bonjour ceci est un fichier test"..., 33) = 33
 # Part III : Service Hardening
 
 ```
-[gnathan@localhost /]$ sudo sysdig proc.name=nginx
-3642 16:18:33.085989761 1 nginx (77961.77961) < epoll_wait res=1
-3643 16:18:33.086023505 1 nginx (77961.77961) > accept4 flags=0
-3644 16:18:33.086061116 1 nginx (77961.77961) < accept4 fd=12(<4t>10.1.1.1:51899->10.1.1.3:80) tuple=10.1.1.1:51899->10.1.1.3:80 queuepct=0 queuelen=1 queuemax=511
-3645 16:18:33.086075774 1 nginx (77961.77961) > epoll_ctl
-3647 16:18:33.086086994 1 nginx (77961.77961) < epoll_ctl
-3648 16:18:33.086089880 1 nginx (77961.77961) > epoll_wait maxevents=512
-3649 16:18:33.086093135 1 nginx (77961.77961) < epoll_wait res=1
-3650 16:18:33.086094689 1 nginx (77961.77961) > accept4 flags=0
-3651 16:18:33.086100520 1 nginx (77961.77961) < accept4 fd=13(<4t>10.1.1.1:51900->10.1.1.3:80) tuple=10.1.1.1:51900->10.1.1.3:80 queuepct=0 queuelen=0 queuemax=511
-3652 16:18:33.086102824 1 nginx (77961.77961) > epoll_ctl
-3653 16:18:33.086104517 1 nginx (77961.77961) < epoll_ctl
-3654 16:18:33.086104948 1 nginx (77961.77961) > epoll_wait maxevents=512
-3655 16:18:33.086111781 1 nginx (77961.77961) > switch next=0 pgft_maj=0 pgft_min=309 vm_size=15524 vm_rss=5816 vm_swap=0
-3656 16:18:33.086217109 0 nginx (77962.77962) > switch next=0 pgft_maj=0 pgft_min=291 vm_size=15524 vm_rss=5304 vm_swap=0
-4651 16:18:36.070163925 1 nginx (77961.77961) < epoll_wait res=2
-4652 16:18:36.070209451 1 nginx (77961.77961) > recvfrom fd=12(<4t>10.1.1.1:51899->10.1.1.3:80) size=1024
-4653 16:18:36.070228085 1 nginx (77961.77961) < recvfrom res=0 data=NULL tuple=10.1.1.1:51899->10.1.1.3:80
-4654 16:18:36.070236541 1 nginx (77961.77961) > close fd=12(<4t>10.1.1.1:51899->10.1.1.3:80)
-4655 16:18:36.071754407 1 nginx (77961.77961) < close res=0
-4656 16:18:36.071761812 1 nginx (77961.77961) > recvfrom fd=13(<4t>10.1.1.1:51900->10.1.1.3:80) size=1024
-4657 16:18:36.071769336 1 nginx (77961.77961) < recvfrom res=0 data=NULL tuple=10.1.1.1:51900->10.1.1.3:80
-4658 16:18:36.071772532 1 nginx (77961.77961) > close fd=13(<4t>10.1.1.1:51900->10.1.1.3:80)
-4659 16:18:36.071915060 1 nginx (77961.77961) < close res=0
-4660 16:18:36.071920790 1 nginx (77961.77961) > epoll_wait maxevents=512
-4661 16:18:36.071928144 1 nginx (77961.77961) > switch next=0 pgft_maj=0 pgft_min=309 vm_size=15524 vm_rss=5816 vm_swap=0
+[gnathan@localhost system]$ sudo sysdig proc.name=nginx
+1050 16:55:21.911047606 0 nginx (78101.78101) < epoll_wait res=1
+1051 16:55:21.911076530 0 nginx (78101.78101) > accept4 flags=0
+1052 16:55:21.911114963 0 nginx (78101.78101) < accept4 fd=8(<4t>10.1.1.1:52181->10.1.1.3:80) tuple=10.1.1.1:52181->10.1.1.3:80 queuepct=0 queuelen=1 queuemax=511
+1053 16:55:21.911128788 0 nginx (78101.78101) > epoll_ctl
+1054 16:55:21.911135691 0 nginx (78101.78101) < epoll_ctl
+1055 16:55:21.911137825 0 nginx (78101.78101) > epoll_wait maxevents=512
+1056 16:55:21.911140250 0 nginx (78101.78101) < epoll_wait res=2
+1057 16:55:21.911141161 0 nginx (78101.78101) > accept4 flags=0
+1058 16:55:21.911148636 0 nginx (78101.78101) < accept4 fd=9(<4t>10.1.1.1:52182->10.1.1.3:80) tuple=10.1.1.1:52182->10.1.1.3:80 queuepct=0 queuelen=0 queuemax=511
+1060 16:55:21.911167152 1 nginx (78100.78100) < epoll_wait res=1
+1061 16:55:21.911180826 1 nginx (78100.78100) > accept4 flags=0
+1062 16:55:21.911296454 1 nginx (78100.78100) < accept4 fd=-11(EAGAIN) tuple=NULL queuepct=0 queuelen=0 queuemax=0
+1063 16:55:21.911314298 1 nginx (78100.78100) > epoll_wait maxevents=512
+1064 16:55:21.911319717 0 nginx (78101.78101) > epoll_ctl
+1065 16:55:21.911321852 1 nginx (78100.78100) > switch next=25 pgft_maj=0 pgft_min=307 vm_size=15524 vm_rss=5952 vm_swap=0
+1066 16:55:21.911324597 0 nginx (78101.78101) < epoll_ctl
+1067 16:55:21.911327432 0 nginx (78101.78101) > recvfrom fd=8(<4t>10.1.1.1:52181->10.1.1.3:80) size=1024
+1069 16:55:21.911335557 0 nginx (78101.78101) < recvfrom res=552 data=GET / HTTP/1.1..Host: 10.1.1.3..Connection: keep-alive..Cache-Control: max-age=0 tuple=10.1.1.1:52181->10.1.1.3:80
+1070 16:55:21.911368228 0 nginx (78101.78101) > newfstatat
+1071 16:55:21.911393255 0 nginx (78101.78101) < newfstatat res=0 dirfd=-100(AT_FDCWD) path=/usr/share/nginx/html/index.html flags=0
+1072 16:55:21.911398124 0 nginx (78101.78101) > openat dirfd=-100(AT_FDCWD) name=/usr/share/nginx/html/index.html flags=65(O_NONBLOCK|O_RDONLY) mode=0
+1073 16:55:21.911410077 0 nginx (78101.78101) < openat fd=14(<f>/usr/share/nginx/html/index.html) dirfd=-100(AT_FDCWD) name=/usr/share/nginx/html/index.html flags=65(O_NONBLOCK|O_RDONLY) mode=0 dev=FD00 ino=8423251
+1074 16:55:21.911412051 0 nginx (78101.78101) > fstat fd=14(<f>/usr/share/nginx/html/index.html)
+1075 16:55:21.911413283 0 nginx (78101.78101) < fstat res=0
+1076 16:55:21.911424614 0 nginx (78101.78101) > writev fd=8(<4t>10.1.1.1:52181->10.1.1.3:80) size=181
+1077 16:55:21.911689571 0 nginx (78101.78101) < writev res=181 data=HTTP/1.1 304 Not Modified..Server: nginx/1.20.1..Date: Sun, 23 Mar 2025 15:55:21
+1078 16:55:21.911701414 0 nginx (78101.78101) > write fd=5(<f>/var/log/nginx/access.log) size=187
+1079 16:55:21.911734767 0 nginx (78101.78101) < write res=187 data=10.1.1.1 - - [23/Mar/2025:16:55:21 +0100] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.
+1080 16:55:21.911736721 0 nginx (78101.78101) > close fd=14(<f>/usr/share/nginx/html/index.html)
+1081 16:55:21.911741459 0 nginx (78101.78101) < close res=0
+1082 16:55:21.911743864 0 nginx (78101.78101) > setsockopt
+1083 16:55:21.911746749 0 nginx (78101.78101) < setsockopt res=0 fd=8(<4t>10.1.1.1:52181->10.1.1.3:80) level=2(SOL_TCP) optname=0(UNKNOWN) val=.... optlen=4
+1084 16:55:21.911748813 0 nginx (78101.78101) > epoll_wait maxevents=512
+1085 16:55:21.911753472 0 nginx (78101.78101) > switch next=0 pgft_maj=0 pgft_min=306 vm_size=15524 vm_rss=5952 vm_swap=0
+2462 16:55:26.455612610 0 nginx (78101.78101) < epoll_wait res=2
+2463 16:55:26.455639752 0 nginx (78101.78101) > recvfrom fd=9(<4t>10.1.1.1:52182->10.1.1.3:80) size=1024
 ```
