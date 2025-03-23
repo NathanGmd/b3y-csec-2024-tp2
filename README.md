@@ -81,7 +81,7 @@ write(1, "Bonjour ceci est un fichier test"..., 33) = 33
 596 14:40:00.489176348 1 cat (6400) < write res=33 data=Bonjour ceci est un fichier test.
 ```
 
-[curl exemple.org]("https://github.com/NathanGmd/b3y-csec-2024-tp2/blob/main/sysdig%20curl%20example.org")
+[curl exemple.org]('https://github.com/NathanGmd/b3y-csec-2024-tp2/blob/main/sysdig%20curl%20example.org')
 
 # Part III : Service Hardening
 
@@ -263,3 +263,15 @@ rt_sigprocmask
 signaldeliver
 wait4
 ```
+
+```
+[Unit]
+Description=Super serveur calculatrice
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/calc.py
+Restart=always
+User=calculatrice
+SystemCallFilter=~clone3 ~rt_sigprocmask ~signaldeliver ~wait4 ~accept4
+```
+Plus de reverse shell possible
