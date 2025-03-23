@@ -82,3 +82,34 @@ write(1, "Bonjour ceci est un fichier test"..., 33) = 33
 ```
 
 [curl exemple.org]("https://github.com/NathanGmd/b3y-csec-2024-tp2/blob/main/sysdig%20curl%20example.org")
+
+# Part III : Service Hardening
+
+```
+[gnathan@localhost /]$ sudo sysdig proc.name=nginx
+3642 16:18:33.085989761 1 nginx (77961.77961) < epoll_wait res=1
+3643 16:18:33.086023505 1 nginx (77961.77961) > accept4 flags=0
+3644 16:18:33.086061116 1 nginx (77961.77961) < accept4 fd=12(<4t>10.1.1.1:51899->10.1.1.3:80) tuple=10.1.1.1:51899->10.1.1.3:80 queuepct=0 queuelen=1 queuemax=511
+3645 16:18:33.086075774 1 nginx (77961.77961) > epoll_ctl
+3647 16:18:33.086086994 1 nginx (77961.77961) < epoll_ctl
+3648 16:18:33.086089880 1 nginx (77961.77961) > epoll_wait maxevents=512
+3649 16:18:33.086093135 1 nginx (77961.77961) < epoll_wait res=1
+3650 16:18:33.086094689 1 nginx (77961.77961) > accept4 flags=0
+3651 16:18:33.086100520 1 nginx (77961.77961) < accept4 fd=13(<4t>10.1.1.1:51900->10.1.1.3:80) tuple=10.1.1.1:51900->10.1.1.3:80 queuepct=0 queuelen=0 queuemax=511
+3652 16:18:33.086102824 1 nginx (77961.77961) > epoll_ctl
+3653 16:18:33.086104517 1 nginx (77961.77961) < epoll_ctl
+3654 16:18:33.086104948 1 nginx (77961.77961) > epoll_wait maxevents=512
+3655 16:18:33.086111781 1 nginx (77961.77961) > switch next=0 pgft_maj=0 pgft_min=309 vm_size=15524 vm_rss=5816 vm_swap=0
+3656 16:18:33.086217109 0 nginx (77962.77962) > switch next=0 pgft_maj=0 pgft_min=291 vm_size=15524 vm_rss=5304 vm_swap=0
+4651 16:18:36.070163925 1 nginx (77961.77961) < epoll_wait res=2
+4652 16:18:36.070209451 1 nginx (77961.77961) > recvfrom fd=12(<4t>10.1.1.1:51899->10.1.1.3:80) size=1024
+4653 16:18:36.070228085 1 nginx (77961.77961) < recvfrom res=0 data=NULL tuple=10.1.1.1:51899->10.1.1.3:80
+4654 16:18:36.070236541 1 nginx (77961.77961) > close fd=12(<4t>10.1.1.1:51899->10.1.1.3:80)
+4655 16:18:36.071754407 1 nginx (77961.77961) < close res=0
+4656 16:18:36.071761812 1 nginx (77961.77961) > recvfrom fd=13(<4t>10.1.1.1:51900->10.1.1.3:80) size=1024
+4657 16:18:36.071769336 1 nginx (77961.77961) < recvfrom res=0 data=NULL tuple=10.1.1.1:51900->10.1.1.3:80
+4658 16:18:36.071772532 1 nginx (77961.77961) > close fd=13(<4t>10.1.1.1:51900->10.1.1.3:80)
+4659 16:18:36.071915060 1 nginx (77961.77961) < close res=0
+4660 16:18:36.071920790 1 nginx (77961.77961) > epoll_wait maxevents=512
+4661 16:18:36.071928144 1 nginx (77961.77961) > switch next=0 pgft_maj=0 pgft_min=309 vm_size=15524 vm_rss=5816 vm_swap=0
+```
