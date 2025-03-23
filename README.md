@@ -202,7 +202,7 @@ switch
 sysinfo
 write
 ```
-
+sysdig syscall pendant hack de calc.py
 ```
 [gnathan@localhost /]$ sudo sysdig -r trace.scap | awk '{print $7}' | sort | uniq
 accept4
@@ -254,4 +254,12 @@ switch
 sysinfo
 wait4
 write
+```
+syscall supplémentaire 
+```
+accept4
+clone3
+rt_sigprocmask
+signaldeliver
+wait4
 ```
