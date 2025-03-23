@@ -150,4 +150,56 @@ root       78851  0.2  0.4  10904  8576 ?        Ss   18:25   0:00 /usr/bin/pyth
 -rwx------. 1 calculatrice calculatrice 660 Mar 23 17:24 /opt/calc.py
 ```
 
+```
+calcula+   78917  0.5  0.4  10844  8192 ?        Ss   18:35   0:00 /usr/bin/python3 /opt/calc.py
+```
+sysdig syscall pendant execution de calc.py
+```
+[gnathan@localhost /]$ sudo sysdig -r trace.scap | awk '{print $7}' | sort | uniq
+accept4
+access
+arch_prctl
+bind
+brk
+close
+dup
+epoll_create1
+execve
+exit_group
+fcntl
+fstat
+futex
+getdents64
+getegid
+geteuid
+getgid
+getpeername
+getrandom
+getsockname
+getuid
+ioctl
+listen
+lseek
+mmap
+mprotect
+munmap
+newfstatat
+openat
+pread
+prlimit
+procexit
+read
+readlink
+recvfrom
+rseq
+rt_sigaction
+sendto
+set_robust_list
+set_tid_address
+setsockopt
+socket
+switch
+sysinfo
+write
+```
 
