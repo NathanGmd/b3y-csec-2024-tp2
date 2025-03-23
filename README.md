@@ -124,3 +124,9 @@ write(1, "Bonjour ceci est un fichier test"..., 33) = 33
 2462 16:55:26.455612610 0 nginx (78101.78101) < epoll_wait res=2
 2463 16:55:26.455639752 0 nginx (78101.78101) > recvfrom fd=9(<4t>10.1.1.1:52182->10.1.1.3:80) size=1024
 ```
+syscall filter pour nginx
+```
+SystemCallFilter=~add_key keyring_search keyring_update truncate getdents getdents64
+SystemCallFilter+=openat fstat read writev mmap setsockopt accept4 epoll_wait epoll_ctl recvfrom close
+SystemCallErrorNumber=EPERM
+```
